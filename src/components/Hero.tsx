@@ -71,81 +71,87 @@ export default function Hero() {
               variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 1, delay: 0.5 } } }}
             >
               <span className="hero-meta-item">
-                <i /> Systems online
-              </span>
-              <span className="hero-meta-item">
-                <i /> Monitoring every workflow
-              </span>
-              <span className="hero-meta-item">
                 {CAPABILITY_TICKER.slice(0, 3).join(" · ")}
               </span>
             </motion.div>
           </motion.div>
 
-          {/* Visual — system network */}
+          {/* Visual — animated terminal */}
           <motion.div
             className="hero-visual"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 0.4 }}
           >
-            <svg className="network-svg" viewBox="0 0 520 420" preserveAspectRatio="none" aria-hidden>
-              <path className="network-line" d="M180 120 C 250 140, 260 180, 300 200" />
-              <path className="network-line" d="M150 300 C 200 280, 250 250, 300 230" />
-              <path className="network-line" d="M360 90 C 340 140, 320 170, 300 200" />
-              <path className="network-line" d="M380 330 C 350 300, 330 260, 300 230" />
-              <path className="network-line" d="M180 120 C 160 190, 150 250, 150 300" />
-              <path className="network-line" d="M360 90 C 380 200, 380 280, 380 330" />
-              <path className="network-line-flow" d="M180 120 L 300 200" />
-              <path className="network-line-flow" d="M300 200 L 380 330" />
-            </svg>
+            <motion.div
+              className="terminal-glow"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.5, delay: 0.9 }}
+            />
 
             <motion.div
-              className="network-card nc-primary"
-              animate={{ y: [0, -10, 0] }}
+              className="terminal"
+              animate={{ y: [0, -8, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="nc-head">
-                <span className="dot" /> CUSTOMER INBOX
+              <div className="terminal-bar">
+                <span className="term-dot r" />
+                <span className="term-dot y" />
+                <span className="term-dot g" />
+                <span className="term-title">kokyu@system ~</span>
               </div>
-              <div className="nc-title">WhatsApp · Email · Web</div>
-              <div className="nc-sub">Messages flowing in</div>
-            </motion.div>
-
-            <motion.div
-              className="network-card nc-left"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-            >
-              <div className="nc-head">
-                <span className="dot" /> AI AGENT
+              <div className="terminal-body">
+                <span
+                  className="term-line hdr"
+                  style={{ "--w": "19ch", "--steps": 18, "--d": "0.3s" } as React.CSSProperties}
+                >
+                  KOKYU SYSTEM v2.4
+                </span>
+                <span
+                  className="term-line"
+                  style={{ "--w": "30ch", "--steps": 29, "--d": "1.1s" } as React.CSSProperties}
+                >
+                  &gt; understanding your business
+                </span>
+                <span
+                  className="term-line ok"
+                  style={{ "--w": "20ch", "--steps": 19, "--d": "2.2s" } as React.CSSProperties}
+                >
+                  {"  "}✓ workflow mapped
+                </span>
+                <span
+                  className="term-line"
+                  style={{ "--w": "31ch", "--steps": 30, "--d": "3.2s" } as React.CSSProperties}
+                >
+                  &gt; engineering the right system
+                </span>
+                <span
+                  className="term-line ok"
+                  style={{ "--w": "31ch", "--steps": 30, "--d": "4.3s" } as React.CSSProperties}
+                >
+                  {"  "}✓ software · ai · automation
+                </span>
+                <span
+                  className="term-line"
+                  style={{ "--w": "30ch", "--steps": 29, "--d": "5.3s" } as React.CSSProperties}
+                >
+                  &gt; automating repetitive work
+                </span>
+                <span
+                  className="term-line ok"
+                  style={{ "--w": "30ch", "--steps": 29, "--d": "6.4s" } as React.CSSProperties}
+                >
+                  {"  "}✓ team focuses on decisions
+                </span>
+                <span
+                  className="term-line hit"
+                  style={{ "--w": "39ch", "--steps": 38, "--d": "7.5s" } as React.CSSProperties}
+                >
+                  → technology working for your business
+                </span>
+                <span className="term-cursor" aria-hidden />
               </div>
-              <div className="nc-title">LangGraph · Memory</div>
-              <div className="nc-sub">Understand · decide · act</div>
-            </motion.div>
-
-            <motion.div
-              className="network-card nc-right"
-              animate={{ y: [0, -12, 0] }}
-              transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-            >
-              <div className="nc-head">
-                <span className="dot" /> WORKFLOW
-              </div>
-              <div className="nc-title">Automation · APIs</div>
-              <div className="nc-sub">Talking to your stack</div>
-            </motion.div>
-
-            <motion.div
-              className="network-card nc-center"
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-            >
-              <div className="nc-head">
-                <span className="dot" /> SYSTEM
-              </div>
-              <div className="nc-title">One connected system</div>
-              <div className="nc-sub">status: operational</div>
             </motion.div>
           </motion.div>
         </div>
