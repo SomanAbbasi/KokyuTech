@@ -1,0 +1,13 @@
+/// <reference types="@cloudflare/workers-types" />
+
+export interface Env {
+    ASSETS: Fetcher;
+}
+
+const worker = {
+    async fetch(request: Request, env: Env): Promise<Response> {
+        return env.ASSETS.fetch(request);
+    },
+};
+
+export default worker;
