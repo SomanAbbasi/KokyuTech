@@ -15,8 +15,9 @@ export const COMPANY = {
 export const EMAIL = "contact@kokyutech.com";
 export const MAILTO = `mailto:${EMAIL}`;
 
-export const PHONE = "+913481822987";
+export const PHONE = "+919921494000";
 export const TEL = `tel:${PHONE}`;
+export const WHATSAPP_LINK = `https://wa.me/${PHONE.replace(/\D/g, "")}`;
 
 // Social accounts are only rendered if they are verified. Do not add links here
 // unless the accounts actually exist.
@@ -82,8 +83,8 @@ export const CAPABILITIES = [
   {
     id: "SECURITY & COMPLIANCE",
     title: "Security & Compliance",
-    desc: "Security workflows, compliance automation and SOC 2 / ISO 27001 readiness systems.",
-    tags: ["Compliance", "SOC 2", "ISO 27001", "Audit"],
+    desc: "Security policies, access control, logging and basic compliance foundations set up directly in your stack.",
+    tags: ["Policies", "Access Control", "Logging", "Compliance"],
   },
 ];
 
@@ -290,15 +291,15 @@ export const ENGINEERING_FLOW = [
 
 // ─────────────────────────────────────────────────────────────
 // SECURITY & COMPLIANCE
+// Services we deliver today. Our own security management tool is
+// still in development — we implement these practices directly.
 // ─────────────────────────────────────────────────────────────
 export const SECURITY_WORKFLOW = [
-  { step: "01", label: "Framework", desc: "Pick the standard — SOC 2, ISO 27001 or internal policy." },
-  { step: "02", label: "Controls", desc: "Define the controls the framework requires." },
-  { step: "03", label: "Policies", desc: "Maintain versioned policy documents, never stale copies." },
-  { step: "04", label: "Owners", desc: "Assign owners to every control and policy." },
-  { step: "05", label: "Evidence", desc: "Collect and link evidence as work actually happens." },
-  { step: "06", label: "Reviews", desc: "Run recurring reviews with approvals tracked." },
-  { step: "07", label: "Audit Ready", desc: "Package everything for audit, on demand." },
+  { step: "01", label: "Assess", desc: "Review your current security setup and find the gaps." },
+  { step: "02", label: "Policies", desc: "Set up clear, practical security policies." },
+  { step: "03", label: "Access Control", desc: "Roles and least-privilege access in your stack." },
+  { step: "04", label: "Logging", desc: "Centralized logging and activity monitoring." },
+  { step: "05", label: "Compliance Foundations", desc: "Basic compliance groundwork you can build on." },
 ];
 
 // ─────────────────────────────────────────────────────────────

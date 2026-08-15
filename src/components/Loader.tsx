@@ -7,25 +7,79 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const LOADER_STORAGE_KEY = "kokyu-loader-seen";
+
 export default function Loader() {
   const container = useRef<HTMLDivElement>(null);
   const logoGroupRef = useRef<SVGGElement>(null);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
+
+  const isFirstVisit = () => {
+    try {
+      return window.localStorage.getItem(LOADER_STORAGE_KEY) !== "1";
+    } catch {
+      return true;
+    }
+  };
+
+  const hideLoader = () => {
+    const loader = document.getElementById("loader");
+    if (loader) loader.style.display = "none";
+    document.body.classList.remove("loading");
+    ScrollTrigger.refresh();
+  };
+
+  const handleSkip = () => {
+    const tl = timelineRef.current;
+    if (tl) tl.kill();
+    if (container.current) {
+      gsap.to(container.current, {
+        opacity: 0,
+        duration: 0.25,
+        ease: "power1.out",
+        onComplete: () => {
+          window.localStorage.setItem(LOADER_STORAGE_KEY, "1");
+          hideLoader();
+        },
+      });
+    }
+  };
 
   useGSAP(
     () => {
       const paths = logoGroupRef.current?.querySelectorAll(".loader-logo-path-stroke");
       const fillPaths = logoGroupRef.current?.querySelectorAll(".loader-logo-path-fill");
+      const el = container.current;
+      if (!paths || !fillPaths || !el) return;
 
-      if (!paths || !fillPaths) return;
+      // Repeat visits: skip the full animation and use a very short fade instead.
+      if (!isFirstVisit()) {
+        const quick = gsap.timeline({
+          onComplete: () => {
+            window.localStorage.setItem(LOADER_STORAGE_KEY, "1");
+            hideLoader();
+          },
+        });
+        timelineRef.current = quick;
+        quick.to(el, {
+          opacity: 0,
+          duration: 0.3,
+          ease: "power1.out",
+        });
+        return;
+      }
+
+      // First visit: reveal the skip option and run the full animation.
+      const skipButton = document.getElementById("loader-skip");
+      if (skipButton) gsap.set(skipButton, { opacity: 1, pointerEvents: "auto" });
 
       const loaderTimeline = gsap.timeline({
         onComplete: () => {
-          document.body.classList.remove("loading");
-          const loader = document.getElementById("loader");
-          if (loader) loader.style.display = "none";
-          ScrollTrigger.refresh();
+          window.localStorage.setItem(LOADER_STORAGE_KEY, "1");
+          hideLoader();
         },
       });
+      timelineRef.current = loaderTimeline;
 
       // 1. Initial State: Stroke paths are visible but dash-offset to hide them
       // 2. Animate strokes (drawing the outline)
@@ -57,7 +111,7 @@ export default function Loader() {
         }, "-=0.3")
         // 4. Brief hold then exit
         .to({}, { duration: 0.8 })
-        .to(container.current, {
+        .to(el, {
           yPercent: -100,
           duration: 1.2,
           ease: "expo.inOut",
@@ -122,6 +176,10 @@ export default function Loader() {
           />
         </g>
       </svg>
+
+      <button type="button" id="loader-skip" className="loader-skip" onClick={handleSkip}>
+        Skip
+      </button>
     </div>
   );
 }

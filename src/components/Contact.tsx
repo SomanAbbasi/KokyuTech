@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Reveal from "./Reveal";
-import { EMAIL, MAILTO, PHONE, TEL, SECTION_IDS } from "@/lib/config";
+import { EMAIL, MAILTO, PHONE, TEL, WHATSAPP_LINK, SECTION_IDS } from "@/lib/config";
 
 export default function Contact() {
   return (
@@ -35,6 +35,15 @@ export default function Contact() {
               </Link>
               <a href={MAILTO} className="btn btn-ghost" style={{ borderColor: "rgba(28,25,23,0.3)", color: "#1c1917" }}>
                 Contact Us
+              </a>
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost"
+                style={{ borderColor: "rgba(28,25,23,0.3)", color: "#1c1917" }}
+              >
+                Chat on WhatsApp
               </a>
             </div>
           </Reveal>

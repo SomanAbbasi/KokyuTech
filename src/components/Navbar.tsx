@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NAV_LINKS, COMPANY, SECTION_IDS } from "@/lib/config";
+import { NAV_LINKS, COMPANY, SECTION_IDS, EMAIL, PHONE } from "@/lib/config";
 import { scrollToId } from "@/lib/scroll";
 
 export default function Navbar() {
@@ -136,8 +136,8 @@ export default function Navbar() {
             >
               Start a Project →
             </Link>
-            <a href="mailto:contact@kokyutech.com">contact@kokyutech.com</a>
-            <a href="tel:+913481822987">+91 348 182 2987</a>
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+            <a href={`tel:${PHONE}`}>{PHONE}</a>
           </div>
         </div>
       )}

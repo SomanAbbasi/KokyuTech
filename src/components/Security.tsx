@@ -22,15 +22,10 @@ export default function Security() {
             </Reveal>
             <Reveal delay={0.16}>
               <p className="security-desc">
-                We are building simpler systems for startups and growing businesses
-                to manage security policies, controls, evidence and audit workflows
-                — without turning compliance into another operational burden.
-              </p>
-            </Reveal>
-            <Reveal delay={0.24}>
-              <p className="security-desc" style={{ fontSize: "0.9rem", color: "var(--text-muted)" }}>
-                We develop security policy management, SOC 2 readiness and ISO 27001
-                workflow concepts around these steps.
+                We help startups set up security policies, access control, logging,
+                and basic compliance foundations. Our own security management tool
+                is in development; for now, we implement these practices directly
+                in your stack.
               </p>
             </Reveal>
             <Reveal delay={0.3}>
