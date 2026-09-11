@@ -15,7 +15,7 @@ export const COMPANY = {
 export const EMAIL = "contact@kokyutech.com";
 export const MAILTO = `mailto:${EMAIL}`;
 
-export const PHONE = "+919921494000";
+export const PHONE = "+910000000000";
 export const TEL = `tel:${PHONE}`;
 export const WHATSAPP_LINK = `https://wa.me/${PHONE.replace(/\D/g, "")}`;
 
