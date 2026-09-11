@@ -3,6 +3,8 @@
 A high-performance modern tech portfolio and agency website built with **Next.js**, **React**, **TypeScript**, **GSAP**, **Framer Motion**, and **Lenis** smooth scrolling, deployed on **Cloudflare Workers**.
 
 ---
+## Screenshots
+<img width="1919" height="1002" alt="Screenshot 2026-09-11 210308" src="https://github.com/user-attachments/assets/a6c4ca0c-07a3-43cf-92cd-c122546b7d7e" />
 
 ## ✨ Features
 
